@@ -89,19 +89,13 @@ jobs:
             - name: Install dependencies
               run: |
                   sudo apt update
-                  sudo apt -y install libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libxext-dev wayland-protocols libwayland-dev libxkbcommon-dev mingw-w64 git cmake make
+                  sudo apt install libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libxext-dev wayland-protocols libwayland-dev libxkbcommon-dev mingw-w64
 
             - name: Configure shared library
-              run: cmake -S . -B build-shared -D GLFW_BUILD_WAYLAND=ON -D BUILD_SHARED_LIBS=ON CMAKE_TOOLCHAIN_FILE=CMake/x86_64-w64-mingw32-clang.cmake
-            - name: Mingw clang
-              run: |
-                git clone https://github.com/tpoechtrager/wclang.git
-                cd wclang
-                cmake -DCMAKE_INSTALL_PREFIX=_prefix_ .
-                make
-                make install
+              run: cmake -S . -B build-shared -D GLFW_BUILD_WAYLAND=ON -D BUILD_SHARED_LIBS=ON CMAKE_TOOLCHAIN_FILE=CMake/x86_64-w64-mingw32.cmake
             - name: Build shared library
               run: cmake --build build-shared --parallel
             - name: Check result files
               run: |
                 ls -al ./build-shared/src
+                ls -al ./build-shared/src/Debug

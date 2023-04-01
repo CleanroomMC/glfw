@@ -1956,7 +1956,7 @@ typedef void (* GLFWimestatusfun)(GLFWwindow* window);
  *
  *  @param[in] window The window that received the event.
  *  @param[in] candidates_count Candidates count.
- *  @param[in] selected_index Index of selected candidate.
+ *  @param[in] selected_index.Index of selected candidate.
  *  @param[in] page_start Start index of candidate currently displayed.
  *  @param[in] page_size Count of candidates currently displayed.
  *
